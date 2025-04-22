@@ -1,3 +1,11 @@
+.DS_Store
+Thumbs.db
+
+# Coverage directory used by tools like istanbul
+coverage/
+.nyc_output/
+coverage_dir/
+
 # Logs
 logs
 *.log

@@ -1,0 +1,16 @@
+{
+    "name": "word2vector-json-ts",
+    "version": "0.5.0",
+    "description": "TypeScript library for processing Word2Vec output vectors in JSON format.",
+    "type": "module",
+    "main": "mod.js",
+    "scripts": {
+        "start": "deno run --allow-net mod.js",
+        "test": "deno test"
+    },
+    "keywords": ["deno", "word2vector", "typescript"],
+    "author": "Dan Cox",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {}
+}
