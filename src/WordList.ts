@@ -1,5 +1,5 @@
-import { Vector } from './Vector.ts';
-import { getCosSimilarity } from './utils/getCosSimilarity.ts';
+import { Vector } from './Vector';
+import { getCosSimilarity } from './utils/getCosSimilarity';
 
 /**
  * WordList class to manage a list of words and their corresponding vectors.

@@ -1,4 +1,4 @@
-import { Vector } from '../Vector.ts';
+import { Vector } from '../Vector';
 
 /**
  * @file getCosSimilarity.ts
@@ -43,7 +43,7 @@ export function getCosSimilarity(f1: Vector, f2: Vector): number {
 
 	return Math.abs(
 		f1Array.reduce(function (sum, a, idx) {
-			return sum + a * f2Array[idx];
+			return sum + a * (f2Array[idx] ?? 0);
 		}, 0) / (Number(f1.magnitude()) * Number(f2.magnitude())),
 	);
 }

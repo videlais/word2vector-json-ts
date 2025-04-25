@@ -1,8 +1,5 @@
-import { beforeEach, describe, it } from 'jsr:@std/testing/bdd';
-import { assertEquals } from 'jsr:@std/assert';
-
-import WordList from '../src/WordList.ts';
-import { Vector } from '../src/Vector.ts';
+import WordList from '../src/WordList';
+import { Vector } from '../src/Vector';
 
 describe('WordList', () => {
 	let wordList: WordList;
@@ -17,7 +14,7 @@ describe('WordList', () => {
 
 		wordList.addWord(word, vector);
 
-		assertEquals(wordList.getVector(word), vector);
+		expect(wordList.getVector(word)).toBe(vector);
 	});
 
 	it('should retrieve the correct vector for a word', () => {
@@ -27,12 +24,12 @@ describe('WordList', () => {
 		wordList.addWord(word, vector);
 
 		const retrievedVector = wordList.getVector(word);
-		assertEquals(retrievedVector, vector);
+		expect(retrievedVector).toBe(vector);
 	});
 
 	it('should return undefined for a non-existent word', () => {
 		const vector = wordList.getVector('nonexistent');
-		assertEquals(vector, undefined);
+		expect(vector).toBe(undefined);
 	});
 
 	it('should check if a word exists', () => {
@@ -41,8 +38,8 @@ describe('WordList', () => {
 
 		wordList.addWord(word, vector);
 
-		assertEquals(wordList.hasWord(word), true);
-		assertEquals(wordList.hasWord('nonexistent'), false);
+		expect(wordList.hasWord(word)).toBe(true);
+		expect(wordList.hasWord('nonexistent')).toBe(false);
 	});
 
 	it('should remove a word and its vector', () => {
@@ -52,13 +49,13 @@ describe('WordList', () => {
 		wordList.addWord(word, vector);
 
 		const removed = wordList.removeWord(word);
-		assertEquals(removed, true);
-		assertEquals(wordList.hasWord(word), false);
+		expect(removed).toBe(true);
+		expect(wordList.hasWord(word)).toBe(false);
 	});
 
 	it('should return false when removing a non-existent word', () => {
 		const removed = wordList.removeWord('nonexistent');
-		assertEquals(removed, false);
+		expect(removed).toBe(false);
 	});
 
 	it('should return the n closest matches for a word', () => {
@@ -74,14 +71,14 @@ describe('WordList', () => {
 		wordList.addWord(word3, vector3);
 		const closestMatches = wordList.getNClosestMatches(2, word1);
 
-		assertEquals(closestMatches.length, 2);
-		assertEquals(closestMatches[0][0], 'word2');
-		assertEquals(closestMatches[1][0], 'word3');
+		expect(closestMatches).toHaveLength(2);
+		expect((closestMatches[0]?.[0] ?? 0)).toBe('word2');
+		expect((closestMatches[1]?.[0] ?? 0)).toBe('word3');
 	});
 
 	it('should return an empty array if no matches are found', () => {
 		const closestMatches = wordList.getNClosestMatches(2, 'nonexistent');
-		assertEquals(closestMatches.length, 0);
+		expect(closestMatches).toHaveLength(0);
 	});
 
 	it('should return an empty array if n is 0', () => {
@@ -91,7 +88,7 @@ describe('WordList', () => {
 		wordList.addWord(word, vector);
 
 		const closestMatches = wordList.getNClosestMatches(0, word);
-		assertEquals(closestMatches.length, 0);
+		expect(closestMatches).toHaveLength(0);
 	});
 
 	it('should return an empty array if n is negative', () => {
@@ -101,7 +98,7 @@ describe('WordList', () => {
 		wordList.addWord(word, vector);
 
 		const closestMatches = wordList.getNClosestMatches(-1, word);
-		assertEquals(closestMatches.length, 0);
+		expect(closestMatches).toHaveLength(0);
 	});
 
 	it('should predict the next N words based on a given word', () => {
@@ -113,13 +110,13 @@ describe('WordList', () => {
 		wordList.addWord(predictedWord, new Vector([4, 5, 6]));
 
 		const predictions = wordList.predictNextNWord(1, [word]);
-		assertEquals(predictions.length, 1);
-		assertEquals(predictions[0], predictedWord);
+		expect(predictions).toHaveLength(1);
+		expect(predictions[0]).toBe(predictedWord);
 	});
 
 	it('should return an empty array if no predictions are found', () => {
 		const predictions = wordList.predictNextNWord(1, ['nonexistent']);
-		assertEquals(predictions.length, 0);
+		expect(predictions).toHaveLength(0);
 	});
 
 	it('should return an empty array if n is 0 for predictions', () => {
@@ -129,7 +126,7 @@ describe('WordList', () => {
 		wordList.addWord(word, vector);
 
 		const predictions = wordList.predictNextNWord(0, [word]);
-		assertEquals(predictions.length, 0);
+		expect(predictions).toHaveLength(0);
 	});
 
 	it('should return an empty array if n is negative for predictions', () => {
@@ -139,11 +136,11 @@ describe('WordList', () => {
 		wordList.addWord(word, vector);
 
 		const predictions = wordList.predictNextNWord(-1, [word]);
-		assertEquals(predictions.length, 0);
+		expect(predictions).toHaveLength(0);
 	});
 
 	it('should return an empty array if the word list is empty', () => {
 		const predictions = wordList.predictNextNWord(1, ['nonexistent']);
-		assertEquals(predictions.length, 0);
+		expect(predictions).toHaveLength(0);
 	});
 });

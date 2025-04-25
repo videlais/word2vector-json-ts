@@ -1,3 +1,3 @@
 # Word2Vector-JSON in TypeScript
 
-TypeScript library for processing Word2Vec output vectors in JSON format.
+This is **not** functionality for creating a Word2Vector model. This library is designed for processing models and their vector output in JSON format.

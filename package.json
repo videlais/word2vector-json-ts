@@ -3,14 +3,34 @@
     "version": "0.5.0",
     "description": "TypeScript library for processing Word2Vec output vectors in JSON format.",
     "type": "module",
-    "main": "mod.js",
+    "main": "build/src/index.js",
     "scripts": {
-        "start": "deno run --allow-net mod.js",
-        "test": "deno test"
+        "test": "jest --coverage",
+        "build": "tsc",
+        "lint": "eslint . --ext .ts,.js --fix",
+        "rimraf": "rimraf build",
+        "all": "npm run rimraf && npm run lint && npm run test && npm run build"
     },
-    "keywords": ["deno", "word2vector", "typescript"],
+    "keywords": [
+        "word2vector",
+        "typescript"
+    ],
     "author": "Dan Cox",
     "license": "MIT",
-    "dependencies": {},
-    "devDependencies": {}
+    "devDependencies": {
+        "@babel/core": "^7.26.10",
+        "@babel/preset-env": "^7.26.9",
+        "@babel/preset-typescript": "^7.27.0",
+        "@eslint/js": "^9.25.1",
+        "@types/jest": "^29.5.14",
+        "babel-jest": "^29.7.0",
+        "eslint": "^9.25.1",
+        "eslint-plugin-jest": "^28.11.0",
+        "globals": "^16.0.0",
+        "jest": "^29.7.0",
+        "rimraf": "^6.0.1",
+        "ts-jest": "^29.3.2",
+        "typescript": "^5.8.3",
+        "typescript-eslint": "^8.31.0"
+    }
 }

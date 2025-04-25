@@ -1,7 +1,9 @@
 /**
  * Vector class representing a mathematical vector.
- * It supports operations like addition, subtraction, dot product, and magnitude calculation.
- * The vector is represented as an array of numbers, where each number corresponds to a dimension.
+ * It supports operations like addition, subtraction, 
+ *  dot product, and magnitude calculation.
+ * The vector is represented as an array of numbers, 
+ *  where each number corresponds to a dimension.
  */
 export class Vector {
 	/**
@@ -54,7 +56,7 @@ export class Vector {
 			throw new Error('Vectors must have the same number of dimensions');
 		}
 		const newDimensions = this.dimensions.map((dim, i) =>
-			dim + vector.getDimensions()[i]
+			dim + (vector.getDimensions()[i] ?? 0)
 		);
 		return new Vector(newDimensions);
 	}
@@ -68,7 +70,7 @@ export class Vector {
 			throw new Error('Vectors must have the same number of dimensions');
 		}
 		const newDimensions = this.dimensions.map((dim, i) =>
-			dim - vector.getDimensions()[i]
+			dim - (vector.getDimensions()[i] ?? 0)
 		);
 		return new Vector(newDimensions);
 	}
@@ -82,7 +84,7 @@ export class Vector {
 			throw new Error('Vectors must have the same number of dimensions');
 		}
 		return this.dimensions.reduce(
-			(sum, dim, i) => sum + dim * vector.getDimensions()[i],
+			(sum, dim, i) => sum + dim * (vector.getDimensions()[i] ?? 0),
 			0,
 		);
 	}

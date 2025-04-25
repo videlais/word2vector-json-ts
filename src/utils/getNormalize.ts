@@ -1,4 +1,4 @@
-import { Vector } from '../Vector.ts';
+import { Vector } from '../Vector';
 
 /**
  * Normalizes a vector.
